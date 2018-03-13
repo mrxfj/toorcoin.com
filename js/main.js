@@ -1273,8 +1273,11 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "GET",
-                url: "https://toorcoin.us12.list-manage.com/subscribe/post?u=66ee80c6d9b8a95e4579fc9c7&id=88c0feedb1&c=?",
+                url: "https://toorcoin.us12.list-manage.com/subscribe/post-json?u=66ee80c6d9b8a95e4579fc9c7&id=88c0feedb1&c=?",
                 data: $("#subscribenewsletterform").serialize(),
+                cache       : false,
+                dataType    : 'json',
+                contentType : "application/json; charset=utf-8",
                 success: function (result) {
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
