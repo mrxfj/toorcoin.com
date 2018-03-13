@@ -1272,21 +1272,16 @@ $(document).ready(function () {
         var error = ValidationsubscribenewsletterForm();
         if (error) {
             $.ajax({
-                type: "POST",
-                url: "email-templates/subscribe-newsletter.php",
+                type: "GET",
+                url: "https://toorcoin.us12.list-manage.com/subscribe/post?u=66ee80c6d9b8a95e4579fc9c7&id=88c0feedb1&c=?",
                 data: $("#subscribenewsletterform").serialize(),
                 success: function (result) {
-                    // Un-comment below code to redirect user to thank you page.
-                    //window.location.href="thank-you.html";
-
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
                     })
                     $("#success-subscribe-newsletter").html(result);
                     $("#success-subscribe-newsletter").fadeIn("slow");
                     $('#success-subscribe-newsletter').delay(4000).fadeOut("slow");
-
-
                 }
             });
         }
