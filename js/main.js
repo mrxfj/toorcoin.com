@@ -1279,10 +1279,12 @@ $(document).ready(function () {
                 dataType    : 'json',
                 contentType : "application/json; charset=utf-8",
                 success: function (result) {
+                    // Un-comment below code to redirect user to thank you page.
+                    //window.location.href="thank-you.html";
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
                     })
-                    $("#success-subscribe-newsletter").html(result);
+                    $("#success-subscribe-newsletter").html(result.msg);
                     $("#success-subscribe-newsletter").fadeIn("slow");
                     $('#success-subscribe-newsletter').delay(4000).fadeOut("slow");
                 }
