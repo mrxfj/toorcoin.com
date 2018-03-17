@@ -1286,7 +1286,7 @@ $(document).ready(function () {
                     })
                     $("#success-subscribe-newsletter").html(result.msg);
                     $("#success-subscribe-newsletter").fadeIn("slow");
-                    $('#success-subscribe-newsletter').delay(4000).fadeOut("slow");
+                    $('#success-subscribe-newsletter').delay(10000).fadeOut("slow");
                 }
             });
         }
@@ -1355,18 +1355,24 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "POST",
-                url: "email-templates/contact.php",
+                crossDomain: true,
+                url: "https://api.toorcoin.com/connect",
                 data: $("#contact-form").serialize(),
+                cache       : false,
+                dataType    : 'json',
+                contentType : "application/json; charset=utf-8",
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
                     //window.location.href="thank-you.html";
+					
+					console.log(result);
 
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
                     })
-                    $("#success-contact-form").html(result);
+                    $("#success-contact-form").html(result.message);
                     $("#success-contact-form").fadeIn("slow");
-                    $('#success-contact-form').delay(4000).fadeOut("slow");
+                    $('#success-contact-form').delay(10000).fadeOut("slow");
                 }
             });
         }
