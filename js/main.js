@@ -1272,21 +1272,21 @@ $(document).ready(function () {
         var error = ValidationsubscribenewsletterForm();
         if (error) {
             $.ajax({
-                type: "POST",
-                url: "email-templates/subscribe-newsletter.php",
+                type: "GET",
+                url: "https://toorcoin.us12.list-manage.com/subscribe/post-json?u=66ee80c6d9b8a95e4579fc9c7&id=88c0feedb1&c=?",
                 data: $("#subscribenewsletterform").serialize(),
+                cache       : false,
+                dataType    : 'json',
+                contentType : "application/json; charset=utf-8",
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
                     //window.location.href="thank-you.html";
-
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
                     })
-                    $("#success-subscribe-newsletter").html(result);
+                    $("#success-subscribe-newsletter").html(result.msg);
                     $("#success-subscribe-newsletter").fadeIn("slow");
-                    $('#success-subscribe-newsletter').delay(4000).fadeOut("slow");
-
-
+                    $('#success-subscribe-newsletter').delay(10000).fadeOut("slow");
                 }
             });
         }
@@ -1355,18 +1355,24 @@ $(document).ready(function () {
         if (error) {
             $.ajax({
                 type: "POST",
-                url: "email-templates/contact.php",
+                crossDomain: true,
+                url: "https://api.toorcoin.com/connect",
                 data: $("#contact-form").serialize(),
+                cache       : false,
+                dataType    : 'json',
+                contentType : "application/json; charset=utf-8",
                 success: function (result) {
                     // Un-comment below code to redirect user to thank you page.
                     //window.location.href="thank-you.html";
+					
+					console.log(result);
 
                     $('input[type=text],textarea').each(function () {
                         $(this).val('');
                     })
-                    $("#success-contact-form").html(result);
+                    $("#success-contact-form").html(result.message);
                     $("#success-contact-form").fadeIn("slow");
-                    $('#success-contact-form').delay(4000).fadeOut("slow");
+                    $('#success-contact-form').delay(10000).fadeOut("slow");
                 }
             });
         }
@@ -2307,17 +2313,6 @@ $(document).ready(function () {
 
     var $allNonRatinaImages = $("img:not([data-at2x])");
     $allNonRatinaImages.attr('data-no-retina', '');
-
-    /*==============================================================*/
-    //demo button  - START CODE
-    /*==============================================================*/
-
-//    var $buythemediv = '<div class="buy-theme alt-font sm-display-none"><a href="https://themeforest.net/item/pofo-creative-agency-corporate-and-portfolio-multipurpose-template/20645944?ref=themezaa" target="_blank"><i class="ti-shopping-cart"></i><span>Buy Theme</span></a></div><div class="all-demo alt-font sm-display-none"><a href="mailto:info@themezaa.com?subject=POFO – Creative Agency, Corporate and Portfolio Multi-purpose Template - Quick Question"><i class="ti-email"></i><span>Quick Question?</span></a></div>';
-//    $('body').append($buythemediv);
-
-    /*==============================================================*/
-    //demo button  - END CODE
-    /*==============================================================*/
 
 });
 /* ===================================
